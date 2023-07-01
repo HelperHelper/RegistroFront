@@ -30,7 +30,8 @@ export class RegistroComponent implements OnInit{
      onSubmit(){
         console.log(this.user);
          if(this.user.contrasena != this.user.confirmarcontrasena){
-            console.log("las contraseñas no son iguales");
+            //console.log("las contraseñas no son iguales");
+            alert("las contraseñas deben ser iguales, regresa atrás y modificalas hasta que no te salga este mensaje")
          }
 
 
