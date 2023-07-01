@@ -1,0 +1,299 @@
+  <div class="container">
+    <!-- (ngSubmit)="onSubmit();" -->
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="was-validated">
+        <div class="card">
+            <div class="form">
+                <div class="left-side">
+                    <div class="left-heading">
+                        <h3>TH365</h3>
+                    </div>
+                    <div class="steps-content">
+                        <h3>Paso <span class="step-number">1</span></h3>
+                        <p class="step-number-content active">Introduce los siguientes datos personales primera fase.</p>
+                        <p class="step-number-content d-none">Introduce los siguientes datos personales segunda fase.</p>
+                        <p class="step-number-content d-none">Introduce los siguientes datos personales tercera fase.</p>
+                        
+                    </div>
+                    <ul class="progress-bar">
+                        <li class="active">información personal parte uno</li>
+                        <li>información personal parte dos</li>
+                        <li>información personal parte tre</li>
+                        <!-- <li>User Photo</li> -->
+                    </ul>
+                    
+
+                    
+                </div>
+                <div class="right-side">
+                    <div class="main active">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Tú Información Personal</h2>
+                            <p>Introduce tus datos personales para acercarte a la compañía.</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label for="pais" class="col-lg-4 control-label">País:</label>
+                                    <div class="col-lg-4 ">
+                                    <select name="pais" #pais="ngModel" [(ngModel)]="user.pais" class="form-select input-sm col-md-1" style="width:230px" aria-label="select example" required require>
+                                        <option value="" disabled selected>Seleccione país</option>
+                                        <option *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</option>
+                                    </select>
+                                    </div>
+                                    <!-- <span *ngIf="!pais.valid && pais.touched">
+                                    El país es obligatorio
+                                    </span> -->
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                            </div>
+                            <div class="input-div"> 
+                                <div class="form-group">
+                                    <label for="genero" class="col-md-4 control-label">Genero:</label>
+                                    <div class="col-md-4">
+                                    <select name="genero" #genero="ngModel" [(ngModel)]="user.genero" class="form-select input-sm col-md-1" style="width:230px" required require aria-label="select example">
+                                        <option value="">Selecciona una opción</option>
+                                        <option value="1">Masculino</option>
+                                        <option value="2">Femenino</option>
+                                    </select>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                            </div>
+                        </div>
+
+        
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label for="pnombre" class="col-md-9 control-label">Primer Nombre:</label>
+                                    <div class="col-md-4">
+                                      <input type="text" name="pnombre" #pnombre="ngModel" [(ngModel)]="user.primernombre" class="form-control input-sm col-md-1" required require>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                                <!-- <span>Primer Nombre</span>    -->
+                            </div>
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label for="validationText1" class="col-md-9 control-label">Segundo Nombre:</label>
+                                    <div class="col-md-4">
+                                      <input type="text" name="snombre" #snombre="ngModel" [(ngModel)]="user.segundonombre" class="form-control input-sm col-md-1"  placeholder="" required require>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                                <!-- <span>Segundo Nombre</span> -->
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label" for="nacimiento">Fecha de nacimiento:</label>
+                                    <div class="col-md-4">
+                                      <input type="date" name="nacimiento"  placeholder="yyyy-mm-dd" id="fecha" #nacimiento="ngModel" [(ngModel)]="user.fechadenacimiento"  class="form-control input-sm col-md-1" required require>
+                                      <script>
+                                        $(document).ready(function(){
+  
+                                        $('#fecha').change(function(){
+                                        
+                                        //se asigna un id al input date y se obtiene el contenido
+                                            var f = $('#fecha').val();
+                                        //Se da el formato de acuerdo a las posiciones
+                                            var formato = f[8]+f[9]+"/"+f[5]+f[6]+"/"+f[0]+f[1]+f[2]+f[3];
+                                        //imprime la variable con la fecha formateada
+                                            alert(formato);
+                                        
+                                        });
+
+                                        });
+                                      </script>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                            
+                            </div>
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label for="validationTextarea" class="col-md-9 control-label">Tipo Documento:</label>
+                                    <div class="col-md-4">
+                                      <select name="tipodocumento" #tipodocumento="ngModel" [(ngModel)]="user.tipodocumento" class="form-control" style="width:230px" required require aria-label="select example">
+                                      <option value="">Selecciona una opción</option>
+                                      <option value="1">Cédula de ciudadanía</option>
+                                      <option value="2">Pasaporte</option>
+                                      <option value="3">Cédula de extranjería</option>
+                                    </select>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label" for="typeNumber">Numero Documento:</label>
+                                    <div class="col-md-4">
+                                      <input type="text" inputmode="numeric" pattern="(\d{5,20})$" name="numerodocumento" #numerodocumento="ngModel" [(ngModel)]="user.numerodocumento" class="form-control input-sm col-md-1" 
+                                    onkeydown="javascript: return event.keyCode === 8 ||
+                                    event.keyCode === 46 ? true : !isNaN(Number(event.key)) " required require />
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                            </div>
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label" for="typeNumber">Foto Documento - Frente:</label>
+                                    <div class="col-md-7">
+                                      <input type="file" name="fotodocumentofrente" #fotodocumentofrente="ngModel" [(ngModel)]="user.fotodocumentofrente" class="form-control input-sm col-md-1" aria-label="file example" required require>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label" for="typeNumber">Foto Documento - Reverso:</label>
+                                    <div class="col-md-7">
+                                      <input type="file" name="fotodocumentoreverso" #fotodocumentoreverso="ngModel" [(ngModel)]="user.fotodocumentoreverso" class="form-control input-sm col-md-1" aria-label="file example" required require>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button class="next_button">Siguiente Paso</button>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Personal Parte 2</h2>
+                            <p>Informa a la compañia un poco más sobre tí.</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label for="email" class="col-md-9 control-label">Correo Electronico:</label>
+                                    <div class="col-md-4">
+                                      <input type="email" name="correoelectronico" #correoelectronico="ngModel" [(ngModel)]="user.correoelectronico" class="form-control input-sm col-md-1" placeholder="Ingrese Correo" required require>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                  </div>
+                                <!-- <span>School Name</span> -->
+                            </div>
+                            <div class="input-div"> 
+                                <div class="form-group">
+                                    <label for="password" class="col-md-6 control-label">Contraseña:</label>
+                                    <div class="col-md-4">
+                                      <input type="password" id="pass" name="contraseña" #contrasena="ngModel" [(ngModel)]="user.contrasena"  class="form-control input-sm col-md-1"  placeholder="Contraseña" required require>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                                <!-- <span>Board Name</span> -->
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label for="password" class="col-md-4 control-label">Confirmar Contraseña:</label>
+                                    <div class="col-md-4">
+                                      <input type="password" id="passC" name="confirmarcontraseña" #confirmarcontrasena="ngModel" [(ngModel)]="user.confirmarcontrasena" class="form-control input-sm col-md-1"  placeholder="Confirma tú Contraseña" required require>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                                <!-- <span *ngIf="!confirmarcontrasena.value != contrasena.value">
+                                   dsad
+                                 </span> -->
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="typeNumber">Numero teléfono:</label>
+                                    <div class="col-md-4">
+                                      <input type="text" name="numerotelefono" #numerotelefono="ngModel" [(ngModel)]="user.numerotelefono" class="form-control input-sm col-md-1" placeholder="Ingrese su telefono" required require/>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="typeNumberC">Numero celular:</label>
+                                    <div class="col-md-4">
+                                    <input type="text" name="numerocelular" #numerocelular="ngModel" [(ngModel)]="user.numerocelular" class="form-control input-sm col-md-1" placeholder="Ingrese su celular " required require/>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                            </div>
+                        </div>        
+                        <div class="buttons button_space">
+                            <button class="back_button">Atras</button>
+                            <button class="next_button">Siguiente Paso</button>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Información Personal Parte 3</h2>
+                            <p>Lo ultimo acerca de tí y terminamos.</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <div class="form-group">
+                                    <label class="col-md-9 control-label" for="direccion">Dirección residencia:</label>
+                                    <div class="col-md-4">
+                                    <input type="text" name="direccionresidencia" #direccionresidencia="ngModel" [(ngModel)]="user.direccionresidencia" class="form-control input-sm col-md-5" placeholder="Ingrese su direccion" required require/>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                                <!-- <span>Experience 1</span> -->
+                            </div>
+                            <div class="input-div"> 
+                                <div class="form-group">
+                                    <label class="col-md-6 control-label" for="codigopostal">Código postal:</label>
+                                    <div class="col-md-4">
+                                        <input type="text"  name="codigopostal" #codigopostal="ngModel" [(ngModel)]="user.codigopostal" class="form-control input-sm col-md-5" placeholder="Ingrese su codigo postal " required require/>
+                                    </div>
+                                    <div class="invalid-feedback">Example invalid select feedback</div>
+                                </div>
+                                <!-- <span>Position</span> -->
+                            </div>
+                        </div>
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <input type="submit" value="registrarme" class="btn btn-success submit_button" data-bs-toggle="modal" data-bs-target="#myModal"/>
+                            
+                        </div>
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Importante</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                        
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                Tus datos han sido enviados con éxito
+                                </div>
+                        
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                        
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>    
+</div>
+
